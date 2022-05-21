@@ -33,5 +33,5 @@ RUN apt-get update \
   && composer config -g process-timeout 3600 \
   && composer config -g repos.packagist composer https://packagist.org
 
-COPY ./docker/app/php/php.ini /usr/local/etc/php/php.ini
+COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
 COPY ./src /data

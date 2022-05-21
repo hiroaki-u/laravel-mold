@@ -1,10 +1,9 @@
 # 環境構築関連
 init:
 	docker compose up -d --build
+	docker compose exec app composer create-project laravel/laravel . --prefer-dist "9.*"
 	docker compose exec app composer install
 	docker compose exec app chmod -R 777 storage bootstrap/cache
-	@make migrate-seed
-	@make ci-run
 restart:
 	@make down
 	@make up
@@ -19,7 +18,7 @@ build:
 
 # Laravel Projectの作成
 project-start:
-
+	docker compose exec app composer create-project laravel/laravel sample --prefer-dist "9.*"
 
 # キュー関連
 queue:
