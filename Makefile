@@ -1,9 +1,19 @@
-# 環境構築関連
-init:
-	docker compose up -d --build
+# 環境構築関連（初めからProjectを作る場合）
+create-project:
+	@make up
 	docker compose exec app composer create-project laravel/laravel . --prefer-dist "9.*"
-	docker compose exec app composer install
 	docker compose exec app chmod -R 777 storage bootstrap/cache
+	docker compose exec app composer require laravel/breeze --dev
+	docker compose exec app php artisan breeze:install vue
+	docker compose exec node npm install
+	@make run
+# git cloneしてローカルで環境構築する場合（.envのDB設定は事前にしておくこと）
+init:
+	@make up
+	@make composer-install
+	docker compose exec app chmod -R 777 storage bootstrap/cache
+	@make migrate-seed
+	@make ci-run
 restart:
 	@make down
 	@make up
