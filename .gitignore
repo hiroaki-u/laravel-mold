@@ -1,0 +1,25 @@
+# publicディレクトリ
+/src/public/hot
+/src/public/storage
+/src/public/css/*
+/src/public/js/*
+/src/public/mix-manifest.json
+
+# storageディテクトリ
+/src/storage/*.key
+/src/storage/debugbar
+
+# PHP, JSのライブラリ
+/src/vendor
+/src/node_modules
+
+# 環境変数関連
+/src/.env
+
+# その他
+/src/.phpunit.result.cache
+/src/docker-compose.override.yml
+/src/Homestead.json
+/src/Homestead.yaml
+/src/npm-debug.log
+/src/yarn-error.log
